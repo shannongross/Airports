@@ -1,0 +1,65 @@
+Date: 2014-10-14
+This is the metadata file that explains the attributes for the wld_trs_supplyroutes_wfp layer: Supply routes
+Any attributes which are blank or '0' had no data entered at the time of realease.
+Please contribute by giving your inputs at omep.gis@wfp.org or connect on http://geonode.wfp.org/
+
+
+Category: Transportation
+Shape: Line
+
+Schema and Attribute Details:
+
+wld_trs_supplyroutes_wfp
+------------------------
+
+	objectid integer NOT NULL: ArcGIS ID
+	nameportion character varying(100): Portion name of 1 part of the corridor (origin - destination)
+	routetype character varying(25): Corridor/Route type
+			Unknown
+			Road
+			Railway
+			Sea
+			Air
+			Waterway
+	routeclass character varying(25): Corridor/route class
+			Unknown
+			Primary
+			Secondary
+	namecorridor character varying(100): Name of the main corridor (Entry point until EDP)
+	iso3 character varying(5): ISO3 code of the country where the feature is located. This field is calculated automatically at the database level with the bnd_adm0_a_ungiwg_2012 layer
+	iso3_op character varying(25): List of ISO3 code (separated with a character '-' or ','). Use to quickly filter the data for the features of interest for 1 operation. 1 feature could be located in 1 country but be an asset for the operation of another country (for example an office delocalized for security reason in the neighbor country or a warehouse used for storage for several countries). Exceptionnally, it happens that the code do not refer to an iso3 code of a country but to the name of an operation (Ebola, Haiyan...)
+	wfpregion character varying(4): WFP Region of the feature (Calculated automatically from the geometry and the WFP presence layer)
+			OMB
+			OMC
+			OMD
+			OMJ
+			OMN
+			OMP
+	status character varying(25): Supply route status
+			Unknown
+			Open
+			Closed
+			Planned
+	surfacetype character varying(25): Surface of the supply route (only for Roads type)
+	surfacecondition character varying(25): Surface condition(only for Roads type)
+			Unknown
+			Good
+			Average
+			Bad
+	seasonal character varying(25): Is the route impacted by seasons?
+			Unknown
+			Yes
+			No
+	practicability character varying(25): Practicability of the route (only for roads)
+	distancekm integer: Distance (in km)
+	traveltime integer: Travel time in minutes
+	transitcapacitymt numeric(10,2): Transit capacity in MT that the route could handle
+	shapelength numeric(20,16): GIS calculation of the length
+	lastcheckdate timestamp without time zone: Date of the last check of all (or a part) of the attributes. The date has to be specified manually during the edits
+	remarks character varying(1000): Notes/Description/Remarks - The user is free to enter any information that is necessary but cannot be stored in the others fields
+	source character varying(254): Source of the information. It could be the source of the geometry or the source of the main attributes. Several sources can be accepted for the same feature(list of names)
+	createdate timestamp without time zone: Date when the feature has been created. Calculated automatically at the database level while saving (commit) the edits.
+	updatedate timestamp without time zone: Date of the last update. Calculated automatically at the database level while saving (commit) the edits. Different of the lastcheckdate because the user can forget to specify the date manually or because sometimes we can do a quick edit (for example change the status or correct misspelling) without checking all attributes.
+	shape geometry: Geometry
+  
+  
